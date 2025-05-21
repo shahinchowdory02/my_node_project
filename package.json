@@ -1,0 +1,17 @@
+{
+  "name": "node_thapa",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "thapa technical",
+  "license": "ISC",
+  "description": "my node series",
+  "dependencies": {
+    "eslint": "^9.27.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
