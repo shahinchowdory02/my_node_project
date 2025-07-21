@@ -1,18 +1,26 @@
 import express from "express";
 import { PORT } from "./env.js";
+import path from "path";
 
 const app = express();
 
 app.get("/", (req, res) => {
-  // console.log(__dirname);
-  // console.log(__filename);
-  console.log(import.meta.dirname);
-  res.send("Hi");
+  const homePagePath = path.join(import.meta.dirname, "public", "index.html");
+  res.sendFile(homePagePath);
 });
 
 app.listen(PORT, () => {
   console.log("Server starting on port 3000");
 });
+
+// console.log(__dirname);
+// console.log(__filename);
+
+// console.log(import.meta.dirname);
+
+// const __filename = new URL(import.meta.url).pathname;
+
+// console.log(__filename);
 
 // app.get("/", (req, res) => res.send("<h1>Hello world</h1>"));
 
