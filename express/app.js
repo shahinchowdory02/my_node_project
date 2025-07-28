@@ -13,13 +13,28 @@ const app = express();
 // const json = await response.json();
 // console.log(json);
 
-console.log(import.meta.dirname);
-console.log(import.meta.filename);
+// console.log(import.meta.dirname);
+// console.log(import.meta.filename);
 
 const staticPath = path.join(import.meta.dirname, "public");
-console.log(staticPath);
 
-app.use(express.static(staticPath));
+app.use("/public", express.static(staticPath));
+
+// console.log(staticPath);
+app.get("/profile/:username", (req, res) => {
+  console.log(req.params);
+  res.send(`<h1> My username is ${req.params.username}</h1>`);
+});
+
+app.get("/profile/:username/article/:slug", (req, res) => {
+  console.log(req.params);
+
+  const formatedSlug = req.params.slug.replace(/-/g, " ");
+
+  res.send(`<h1> Article ${req.params.username} by ${formatedSlug}</h1>`);
+});
+
+// app.use(express.static(staticPath));
 
 app.listen(PORT, () => {
   console.log("Server starting on port 3000");
