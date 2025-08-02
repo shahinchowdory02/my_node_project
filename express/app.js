@@ -4,6 +4,25 @@ import path from "path";
 
 const app = express();
 
+const staticPath = path.join(import.meta.dirname, "public");
+
+app.use(express.static(staticPath));
+
+// app.get("/contact", (req, res) => {
+//   console.log(req.query);
+//   res.redirect("/");
+// });
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/contact", (req, res) => {
+  console.log(req.body);
+  res.redirect("/");
+});
+
+app.listen(PORT, () => {
+  console.log("Server starting on port 3000");
+});
+
 // app.get("/", (req, res) => {
 //   const homePagePath = path.join(import.meta.dirname, "public", "index.html");
 //   res.sendFile(homePagePath);
@@ -16,29 +35,34 @@ const app = express();
 // console.log(import.meta.dirname);
 // console.log(import.meta.filename);
 
-const staticPath = path.join(import.meta.dirname, "public");
+// app.get("/product", (req, res) => {
+//   console.log(req.query);
+//   res.send(
+//     `<h1> user search for Product ${req.query.page} ${req.query.limit} mobile </h1>`
+//   );
+// });
 
-app.use("/public", express.static(staticPath));
+// app.use("/public", express.static(staticPath));
 
-// console.log(staticPath);
-app.get("/profile/:username", (req, res) => {
-  console.log(req.params);
-  res.send(`<h1> My username is ${req.params.username}</h1>`);
-});
+// // console.log(staticPath);
+// app.get("/profile/:username", (req, res) => {
+//   console.log(req.params);
+//   res.send(`<h1> My username is ${req.params.username}</h1>`);
+// });
 
-app.get("/profile/:username/article/:slug", (req, res) => {
-  console.log(req.params);
+// app.get("/profile/:username/article/:slug", (req, res) => {
+//   console.log(req.params);
 
-  const formatedSlug = req.params.slug.replace(/-/g, " ");
+//   const formatedSlug = req.params.slug.replace(/-/g, " ");
 
-  res.send(`<h1> Article ${req.params.username} by ${formatedSlug}</h1>`);
-});
+//   res.send(`<h1> Article ${req.params.username} by ${formatedSlug}</h1>`);
+// });
 
-// app.use(express.static(staticPath));
+// // app.use(express.static(staticPath));
 
-app.listen(PORT, () => {
-  console.log("Server starting on port 3000");
-});
+// app.listen(PORT, () => {
+//   console.log("Server starting on port 3000");
+// });
 
 // console.log(__dirname);
 // console.log(__filename);
