@@ -8,20 +8,26 @@ const staticPath = path.join(import.meta.dirname, "public");
 
 app.use(express.static(staticPath));
 
-// app.get("/contact", (req, res) => {
-//   console.log(req.query);
-//   res.redirect("/");
-// });
-app.use(express.urlencoded({ extended: true }));
-
-app.post("/contact", (req, res) => {
-  console.log(req.body);
+app.get("/contact", (req, res) => {
+  console.log(req.query);
   res.redirect("/");
 });
 
 app.listen(PORT, () => {
   console.log("Server starting on port 3000");
 });
+
+// app.get("/contact", (req, res) => {
+//   console.log(req.query);
+//   res.redirect("/");
+// });
+
+// app.use(express.urlencoded({ extended: true }));
+
+// app.post("/contact", (req, res) => {
+//   console.log(req.body);
+//   res.redirect("/");
+// });
 
 // app.get("/", (req, res) => {
 //   const homePagePath = path.join(import.meta.dirname, "public", "index.html");
