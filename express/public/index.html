@@ -10,16 +10,21 @@
   <body>
     <h1>Home Page</h1>
 
-    <form action="/contact">
+    <form action="/contact" method="post">
       <div>
         <label for="name">Name</label>
         <!-- <input type="text" name="name" id="name" /> -->
-        <input type="text" name="name" id="name" />
+        <input type="text" name="user[name]" id="name" />
       </div>
       <div>
         <label for="message"> Message </label>
-        <textarea
+        <!-- <textarea
           name="meassage"
+          id="meassage"
+          placeholder="Write your message here"
+        ></textarea> -->
+        <textarea
+          name="user[meassage]"
           id="meassage"
           placeholder="Write your message here"
         ></textarea>
